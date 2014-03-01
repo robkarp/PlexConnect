@@ -109,46 +109,6 @@ function refreshSection(id, refreshKey)
     req.send();
 }
 
-
-
-/*
- * navigation bar - dynamic loading of manu pages
- */
-function loadMenuPage(event)
-{
-    var id = event.navigationItemId;
-    log("loadItem: "+id);
-    var item = document.getElementById(id);
-    var url = item.getElementByTagName('url').textContent;
-    
-    if (url.indexOf("{{URL()}}")!=-1)
-    {
-        url = url + "&PlexConnectUDID=" + atv.device.udid;
-    }
-    
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function()
-    {
-        try
-        {
-            if(req.readyState == 4)
-            {
-                doc = req.responseXML
-                if(event) event.success(doc);
-                else atv.loadXML(doc);
-            }
-        }
-        catch(e)
-        {
-            req.abort();
-        }
-    }
-    req.open('GET', url, true);
-    req.send();
-};
-
-
-
 /*
  * lookup movie title on tmdb and pass trailer ID to PlexConnect
  */
