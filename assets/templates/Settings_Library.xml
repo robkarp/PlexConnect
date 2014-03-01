@@ -38,7 +38,11 @@
         <sections>
           <menuSection>
             <items>
-              <oneLineMenuItem id="ImageHeader" onSelect="toggleSettings('ImageHeader', 'Settings_Library')">
+              <oneLineMenuItem id="LibraryView" onSelect="toggleSettings('LibraryView', 'Settings_Library')">
+                <label>{{TEXT(Library View)}}</label>
+                <rightLabel>{{SETTING(libraryview)}}</rightLabel>
+              </oneLineMenuItem>              
+                <oneLineMenuItem id="ImageHeader" onSelect="toggleSettings('ImageHeader', 'Settings_Library')">
                 <label>{{TEXT(Header)}}</label>
                 <rightLabel>{{SETTING(imageheader)}}</rightLabel>
               </oneLineMenuItem>
@@ -50,10 +54,14 @@
                 <label>{{TEXT(Sections Position)}}</label>
                 <rightLabel>{{SETTING(sectionsposition)}}</rightLabel>
               </oneLineMenuItem>
+              <oneLineMenuItem id="Library_Search" onSelect="toggleSettings('Library_Search', 'Settings_Library')">
+                <label>{{TEXT(Search Section)}}</label>
+                <rightLabel>{{SETTING(Library_search)}}</rightLabel>
+              </oneLineMenuItem>
               <oneLineMenuItem id="ShowTitles_Library" onSelect="toggleSettings('ShowTitles_Library', 'Settings_Library')">
                 <label>{{TEXT(Poster Titles)}}</label>
                 <rightLabel>{{SETTING(showtitles_library)}}</rightLabel>
-              </oneLineMenuItem>
+              </oneLineMenuItem>              
             </items>
           </menuSection>
 
@@ -77,7 +85,7 @@
                 <accessories>
                   <checkMark/>
                 </accessories>{{CUT($library_recentlyadded::unchecked=CUT|checked=)}}
-              </oneLineMenuItem>
+              </oneLineMenuItem>              
             </items>
           </menuSection>
         </sections>

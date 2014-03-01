@@ -38,9 +38,11 @@ options = { \
     'tv_navbar_unwatched'       :('checked', 'unchecked'), \
     'tv_navbar_genres'          :('checked', 'unchecked'), \
     'tv_navbar_more'            :('checked', 'unchecked'), \
+    'libraryview'            :('Grid', 'List'), \
     'imageheader'            :('Show', 'Hide'), \
-    'sectionicons'            :('Apple', 'Plex', 'Fanart'), \
+    'sectionicons'            :('Apple', 'Plex', 'Fanart', 'Custom'), \
     'sectionsposition'            :('Top', 'Bottom'), \
+    'library_search'            :('Show', 'Hide'), \
     'library_ondeck'            :('checked', 'unchecked'), \
     'library_recentlyadded'            :('checked', 'unchecked'), \
     'transcodequality'  :('1080p 40.0Mbps', \
