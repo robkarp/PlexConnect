@@ -2,54 +2,30 @@
   <head>
     <script src="{{URL(:/js/utils.js)}}" />
     <script src="{{URL(:/js/scrobble.js)}}" />
-    <script src="{{URL(:/js/updateXML.js)}}" />
     <script src="{{URL(:/js/settings.js)}}" />
   </head>
 
   <body>
-    {{ADDXML(OnDeck::/library/onDeck)}}      
-    <!--{{ADDXML(RecentlyAdded::/library/recentlyAdded)}}-->      
-    {{VAR(items:NoKey:FALSE)}}
-    {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
+      {{ADDXML(OnDeck::/library/onDeck)}}      
+      {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
+      {{VAR(items:NoKey:FALSE)}}
+      {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
 
-    <scroller volatile="true"  id="com.sample.movie-showcase-grid">
+      <scroller volatile="true"  id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-          <image insets="50, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
-        </imageHeader>
+            <image insets="50, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
+        </imageHeader>{{CUT($imageheader::Hide=CUT|Show=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
+        <simpleHeader>
+            <title>{{TEXT(Plex Library)}}</title>
+        </simpleHeader>{{CUT($imageheader::Show=CUT|Hide=)}}
       </header>
       <items>
-    
-        <collectionDivider alignment="left" accessibilityLabel="On Deck">
-            {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
-            <title>{{TEXT(On Deck)}}</title>
-        </collectionDivider>
-        <shelf id="shelf_0" columnCount="7">
-            {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
-            <sections>
-                <shelfSection>
-                    {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
-                    <items>
-                        <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
-                                onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
-                                onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
-                                onHoldSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu{{VAL(type::movie=Video|episode=TVOnDeck)}}')">
-                            {{COPY(@OnDeck/Server/Video)}}
-                            {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
-                            <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
-                            <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
-                            <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=parentThumb)}}::384)}}</image>
-                            <defaultImage>resource://Poster.png</defaultImage>
-                        </moviePoster>
-                    </items>
-                </shelfSection>
-            </sections>
-        </shelf>
-
+          
         <collectionDivider alignment="left" accessibilityLabel="Library">
             <title>{{TEXT(Plex Library)}}</title>
-        </collectionDivider>
-        <shelf id="shelf_1" columnCount="5">
+        </collectionDivider>{{CUT($sectionsposition::Top=|Bottom=CUT)}}
+        <shelf id="shelf_0" columnCount="{{EVAL(min({{VAL(@main/Server/size:0)}},5))}}">
             <sections>                             
             <!-- local servers -->
                 <shelfSection>
@@ -57,35 +33,84 @@
                     <items>
                         <!-- /library/sections -->
                         <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
-                                               alwaysShowTitles="true"
+                                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(key)}}')"
                                                onSelect="atv.loadURL('{{URL(key)}}')"
                                                onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
                             {{COPY(Directory)}}
                             {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                             <title>{{VAL(title)}}</title>
-                            <image>{{URL(:/thumbnails/{{VAL(type)}}.png)}}</image>
+                            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+                            <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=)}}
+                            <image>{{URL(:/thumbnails/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
                             <defaultImage>resource://16X9.png</defaultImage>
                         </moviePoster>
                     </items>
                 </shelfSection>
           </sections>
-        </shelf>
-         
-        <!--<collectionDivider alignment="left" accessibilityLabel="Recently Added">
-          {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
+        </shelf>{{CUT($sectionsposition::Top=|Bottom=CUT)}}  
+          
+        <collectionDivider alignment="left" accessibilityLabel="On Deck">
+            {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
+            <title>{{TEXT(On Deck)}}</title>
+        </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
+        <shelf id="shelf_1" columnCount="7">
+          {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
+          <sections>
+            <shelfSection>
+              {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
+              <items>
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                            onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
+                  {{COPY(@OnDeck/Server/Video)}}
+                  {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
+                  <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
+                  <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=parentThumb)}}::384)}}</image>
+                  <defaultImage>resource://Poster.png</defaultImage>
+                </moviePoster>
+              </items>
+            </shelfSection>
+          </sections>
+        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}  
+          
+        <!--<showcase accessibilityLabel="Showcase movies" id="showcase_1">
+          <initialSelection>
+            <indexPath>
+              <index>3</index>
+            </indexPath>
+          </initialSelection>
+                            {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
+          <items>
+            {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
+            <showcasePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}"                             
+                            onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')"
+                            onHoldSelect="scrobbleMenu('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(ratingKey)}}', '{{TEXT(On Deck Movie)}}');">
+                  {{COPY(@OnDeck/Server/Video)}}
+                  {{VAR(items:NoKey:TRUE)}}
+                  <image>{{IMAGEURL(thumb::768)}}</image>
+                  <defaultImage>resource://Poster.png</defaultImage>
+            </showcasePoster>
+          </items>
+        </showcase>-->
+
+        <collectionDivider alignment="left" accessibilityLabel="Recently Added">
+          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
-        </collectionDivider>  
+        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}  
         <shelf id="shelf_2" columnCount="7">
-          {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
+          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
-                            onHoldSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu{{VAL(type::movie=Video|episode=TVOnDeck)}}')">
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
                   {{COPY(@RecentlyAdded/Server/Video)}}
                   {{VAR(items:NoKey:TRUE)}} 
                   <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
@@ -96,7 +121,36 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>-->
+        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}              
+          
+        <collectionDivider alignment="left" accessibilityLabel="Library">
+            <title>{{TEXT(Plex Library)}}</title>
+        </collectionDivider>{{CUT($sectionsposition::Top=CUT|Bottom=)}}
+        <shelf id="shelf_0" columnCount="{{EVAL(min({{VAL(@main/Server/size:0)}},5))}}">
+            <sections>                             
+            <!-- local servers -->
+                <shelfSection>
+                    {{COPY(Server:@main/size::0=|1=COPY)}}
+                    <items>
+                        <!-- /library/sections -->
+                        <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                                               onPlay="atv.loadURL('{{URL(key)}}')"
+                                               onSelect="atv.loadURL('{{URL(key)}}')"
+                                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+                            {{COPY(Directory)}}
+                            {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                            <title>{{VAL(title)}}</title>
+                            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+                            <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=)}}
+                            <image>{{URL(:/thumbnails/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
+                            <defaultImage>resource://16X9.png</defaultImage>
+                        </moviePoster>
+                    </items>
+                </shelfSection>
+          </sections>
+        </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=)}}  
+          
     </items>
     </scroller>
       

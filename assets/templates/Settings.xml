@@ -71,7 +71,13 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="MovieView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsMovies')">
+              <oneLineMenuItem id="LibraryView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsLibrary')">
+                <label>{{TEXT(Library Options)}}</label>
+                <accessories>
+                  <arrow/>
+                </accessories>
+              </oneLineMenuItem>
+                <oneLineMenuItem id="MovieView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsMovies')">
                 <label>{{TEXT(Movie Options)}}</label>
                 <accessories>
                   <arrow/>

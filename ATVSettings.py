@@ -18,6 +18,7 @@ options = { \
     'seasonview'        :('List', 'Coverflow'), \
     'channelview'       :('List', 'Grid', 'Bookcase'), \
     'durationformat'    :('Hours/Minutes', 'Minutes'), \
+    'showtitles_library'         :('Highlighted Only', 'Show All'), \
     'showtitles_movies'         :('Highlighted Only', 'Show All'), \
     'showtitles_tvshows'        :('Highlighted Only', 'Show All'), \
     'showtitles_homevideos'     :('Highlighted Only', 'Show All'), \
@@ -37,6 +38,11 @@ options = { \
     'tv_navbar_unwatched'       :('checked', 'unchecked'), \
     'tv_navbar_genres'          :('checked', 'unchecked'), \
     'tv_navbar_more'            :('checked', 'unchecked'), \
+    'imageheader'            :('Show', 'Hide'), \
+    'sectionicons'            :('Apple', 'Plex', 'Fanart'), \
+    'sectionsposition'            :('Top', 'Bottom'), \
+    'library_ondeck'            :('checked', 'unchecked'), \
+    'library_recentlyadded'            :('checked', 'unchecked'), \
     'transcodequality'  :('1080p 40.0Mbps', \
                           '480p 2.0Mbps', \
                           '720p 3.0Mbps', '720p 4.0Mbps', \
