@@ -11,7 +11,7 @@
       {{VAR(items:NoKey:FALSE)}}
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
 
-      <scroller id="com.sample.movie-showcase-grid" volatile="true">
+      <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
             <image insets="50, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
@@ -76,7 +76,7 @@
                 <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
-                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@OnDeck/Server/Video)}}
                   {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
@@ -123,7 +123,7 @@
                 <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
-                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@RecentlyAdded/Server/Video)}}
                   {{VAR(items:NoKey:TRUE)}} 
                   <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
@@ -140,7 +140,7 @@
         {{COPY(Server:@main/size::0=|1=COPY)}}
         <collectionDivider alignment="left" accessibilityLabel="Library">
             <title>{{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
-        </collectionDivider>{{CUT($sectionsposition::TopCUT=|Bottom=)}}
+        </collectionDivider>{{CUT($sectionsposition::Top=CUT|Bottom=)}}
 
         <shelf id="shelf_0" columnCount="5">
             <sections>                             
@@ -174,7 +174,7 @@
                     </items>
                 </shelfSection>
           </sections>
-        </shelf>{{CUT($sectionsposition::TopCUT=|Bottom=)}} 
+        </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=)}} 
         </__COPY__>
           
     </items>
