@@ -8,6 +8,7 @@
   <body>
       {{ADDXML(OnDeck::/library/onDeck)}}      
       {{ADDXML(RecentlyAdded::/library/recentlyAdded?stack=0)}}
+      {{ADDXML(VideoChannels::/channels/all)}}
       {{VAR(items:NoKey:FALSE)}}
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
 
@@ -135,6 +136,29 @@
             </shelfSection>
           </sections>
         </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}              
+         
+        <collectionDivider alignment="left" accessibilityLabel="Channels">
+            <title>{{TEXT(Channels)}}</title>
+        </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}} 
+        <shelf id="shelf_3" columnCount="10">
+            <sections>                             
+                <shelfSection>
+                    {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
+                    <items>
+                        <!-- /library/sections -->
+                        <moviePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                                       onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
+                                       onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
+                            {{COPY(Directory)}}
+                            {{VAR(channels:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                            <title>{{VAL(title)}}</title>
+                            <image>{{IMAGEURL(thumb::384)}}</image>
+                            <defaultImage>resource://Poster.png</defaultImage>
+                        </moviePoster>
+                    </items>
+                </shelfSection>
+          </sections>
+        </shelf>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}  
           
         <__COPY__>  
         {{COPY(Server:@main/size::0=|1=COPY)}}

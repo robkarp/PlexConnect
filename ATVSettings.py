@@ -45,6 +45,7 @@ options = { \
     'library_search'            :('Show', 'Hide'), \
     'library_ondeck'            :('checked', 'unchecked'), \
     'library_recentlyadded'            :('checked', 'unchecked'), \
+    'library_channels'            :('checked', 'unchecked'), \
     'transcodequality'  :('1080p 40.0Mbps', \
                           '480p 2.0Mbps', \
                           '720p 3.0Mbps', '720p 4.0Mbps', \

@@ -29,6 +29,28 @@
             </header>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
             
             <items>
+                
+              <!-- OnDeck -->
+              <oneLineMenuItem id="{{VAL(ondeck)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
+                <label>{{TEXT(On Deck)}}</label>
+              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}              
+              
+              <!-- Recently Added -->
+              <oneLineMenuItem id="{{VAL(recentlyadded)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
+                <label>{{TEXT(Recently Added)}}</label>
+              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}               
+                
+               <!-- Channels -->
+              <oneLineMenuItem id="{{VAL(channels)}}"
+                                       onPlay="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')">
+                <label>{{TEXT(Channels)}}</label>
+              </oneLineMenuItem>{{CUT($library_channels::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}  
+                
               <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}')"
@@ -50,6 +72,27 @@
                 <label>{{TEXT(Search)}}</label>
                 <accessories><arrow/></accessories>
               </oneLineMenuItem>{{CUT($library_search::Show=|Hide=CUT)}} 
+            
+              <!-- OnDeck -->
+              <oneLineMenuItem id="{{VAL(ondeck)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
+                <label>{{TEXT(On Deck)}}</label>
+              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}}              
+              
+              <!-- Recently Added -->
+              <oneLineMenuItem id="{{VAL(recentlyadded)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
+                <label>{{TEXT(Recently Added)}}</label>
+              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}}               
+                
+               <!-- Channels -->
+              <oneLineMenuItem id="{{VAL(channels)}}"
+                                       onPlay="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')">
+                <label>{{TEXT(Channels)}}</label>
+              </oneLineMenuItem>{{CUT($library_channels::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}}
               
             </items>
           </menuSection>
@@ -79,6 +122,27 @@
             </header>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
             
             <items>
+                <!-- OnDeck -->
+              <oneLineMenuItem id="{{VAL(ondeck)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
+                <label>{{TEXT(On Deck)}}</label>
+              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}              
+              
+              <!-- Recently Added -->
+              <oneLineMenuItem id="{{VAL(recentlyadded)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
+                <label>{{TEXT(Recently Added)}}</label>
+              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}               
+                
+               <!-- Channels -->
+              <oneLineMenuItem id="{{VAL(channels)}}"
+                                       onPlay="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')">
+                <label>{{TEXT(Channels)}}</label>
+              </oneLineMenuItem>{{CUT($library_channels::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=|Bottom=CUT)}}
+                
               <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}')"
@@ -100,10 +164,30 @@
                 <label>{{TEXT(Search)}}</label>
                 <accessories><arrow/></accessories>
               </oneLineMenuItem>{{CUT($library_search::Show=|Hide=CUT)}} 
+                
+              <!-- OnDeck -->
+              <oneLineMenuItem id="{{VAL(ondeck)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
+                <label>{{TEXT(On Deck)}}</label>
+              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}}              
+              
+              <!-- Recently Added -->
+              <oneLineMenuItem id="{{VAL(recentlyadded)}}"
+                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
+                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
+                <label>{{TEXT(Recently Added)}}</label>
+              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}}               
+                
+               <!-- Channels -->
+              <oneLineMenuItem id="{{VAL(channels)}}"
+                                       onPlay="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(//owned)/channels/all)}}')">
+                <label>{{TEXT(Channels)}}</label>
+              </oneLineMenuItem>{{CUT($library_channels::checked=|unchecked=CUT)}}{{CUT($sectionsposition::Top=CUT|Bottom=)}} 
               
             </items>
           </menuSection>
-        
         </sections>
       </menu>
     </listWithPreview>{{CUT($imageheader::Hide=|Show=CUT)}}{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->

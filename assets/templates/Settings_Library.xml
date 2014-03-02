@@ -85,6 +85,12 @@
                 <accessories>
                   <checkMark/>
                 </accessories>{{CUT($library_recentlyadded::unchecked=CUT|checked=)}}
+              </oneLineMenuItem>               
+              <oneLineMenuItem id="Library_Channels" onSelect="toggleSettings('Library_Channels', 'Settings_Library')">
+                <label>{{TEXT(Channels)}}</label>
+                <accessories>
+                  <checkMark/>
+                </accessories>{{CUT($library_channels::unchecked=CUT|checked=)}}
               </oneLineMenuItem>              
             </items>
           </menuSection>
