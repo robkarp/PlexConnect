@@ -7,7 +7,7 @@
 
   <body>
       {{ADDXML(OnDeck::/library/onDeck)}}      
-      {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
+      {{ADDXML(RecentlyAdded::/library/recentlyAdded?stack=0)}}
       {{VAR(items:NoKey:FALSE)}}
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
 
