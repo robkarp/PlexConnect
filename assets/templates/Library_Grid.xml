@@ -88,7 +88,7 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}  
+        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
           
         <!--<showcase accessibilityLabel="Showcase movies" id="showcase_1">
           <initialSelection>
@@ -114,7 +114,7 @@
         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
-        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}  
+        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
         <shelf id="shelf_2" columnCount="7">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <sections>
@@ -135,12 +135,14 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}              
+        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+              
          
         <collectionDivider alignment="left" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
-        </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}} 
+        </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
         <shelf id="shelf_3" columnCount="10">
+            {{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}
             <sections>                             
                 <shelfSection>
                     {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
@@ -158,7 +160,7 @@
                     </items>
                 </shelfSection>
           </sections>
-        </shelf>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}  
+        </shelf>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}  
           
         <__COPY__>  
         {{COPY(Server:@main/size::0=|1=COPY)}}
@@ -198,11 +200,11 @@
                     </items>
                 </shelfSection>
           </sections>
-        </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=)}} 
+        </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=)}}
         </__COPY__>
           
     </items>
-    </scroller>
+    </scroller>{{CUT(#sections::FALSE=CUT|TRUE=)}}
       
     <!--CUT if no section added-->
     <!--No Sections Available-->
