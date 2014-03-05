@@ -41,7 +41,7 @@
                     <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                     <image>{{URL(:/thumbnails/{{VAL(type)}}-flow-plex.png)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
                     <image>{{URL(:/thumbnails/{{VAL(type)}}-flow.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{URL(:/thumbnails/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=CUT|Custom=)}}                          
+                    <image>{{URL(:/thumbnails/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}-flow.png)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=CUT|Custom=)}}
                     <defaultImage>resource://Poster.png</defaultImage>
              </showcasePoster>
             
@@ -79,7 +79,7 @@
                             <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                             <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
                             <image>{{URL(:/thumbnails/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                            <image>{{URL(:/thumbnails/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=CUT|Custom=)}}
+                            <image>{{URL(:/thumbnails/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}.png)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=CUT|Custom=)}}
                             <defaultImage>resource://16X9.png</defaultImage>
                         </moviePoster>
                         
