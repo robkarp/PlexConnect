@@ -9,12 +9,12 @@
       <navigation currentIndex="0">
         <navigationItem id="Library">
           <title>{{TEXT(Library)}}</title>
-          <url>{{URL(:/PMS(//owned)/library/sections)}}</url>
+          <url>{{URL(:/PMS(owned)/library/sections)}}</url>
         </navigationItem>
         <navigationItem id="Channels">
           <title>{{TEXT(Channels)}}</title>
-          <url>{{URL(:/PMS(//owned)/channels/all)}}</url>
-        </navigationItem>{{CUT($library_channels:CUT:checked=CUT|unchecked=)}}		
+          <url>{{URL(:/PMS(owned)/channels/all)}}</url>
+        </navigationItem>{{CUT($library_channels:CUT:checked=CUT|unchecked=)}}
         <navigationItem id="Settings">
           <title>{{TEXT(Settings)}}</title>
           <url>{{URL(:/&amp;PlexConnect=Settings)}}</url>
